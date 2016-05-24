@@ -307,7 +307,7 @@ module Openfire
       {
         content_type: :json,
         accept: :json,
-        authorization: @access_token
+        authorization: "Token token=\"#{@access_token}\""
       }
     end
 
