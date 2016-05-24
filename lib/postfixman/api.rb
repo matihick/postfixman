@@ -5,14 +5,24 @@ module Postfixman
       @access_token = access_token
     end
 
-    def get_domains
-      request = web_request('GET', '/domains', { }, default_headers)
+    def get_domains(filters={})
+      request = web_request('GET', '/domains', filters, default_headers)
       request[:body].map { |x| Postfixman::Domain.new(x) }
     end
 
-    def get_users(domain_id)
-      request = web_request('GET', "/domains/#{domain_id}/users", { }, default_headers)
+    def get_domain(id)
+      request = web_request('GET', "/domains/#{id}", { }, default_headers)
+      Postfixman::Domain.new(request[:body])
+    end
+
+    def get_users(domain_id, filters={})
+      request = web_request('GET', "/domains/#{domain_id}/users", filters, default_headers)
       request[:body].map { |x| Postfixman::User.new(x) }
+    end
+
+    def get_user(id)
+      request = web_request('GET', "/users/#{id}", { }, default_headers)
+      Postfixman::User.new(request[:body])
     end
 
     def create_user(params)
@@ -30,9 +40,14 @@ module Postfixman
       request[:body]['success'] == true
     end
 
-    def get_aliases(domain_id)
-      request = web_request('GET', "/domains/#{domain_id}/aliases", { }, default_headers)
+    def get_aliases(domain_id, filters={})
+      request = web_request('GET', "/domains/#{domain_id}/aliases", filters, default_headers)
       request[:body].map { |x| Postfixman::Alias.new(x) }
+    end
+
+    def get_alias(id)
+      request = web_request('GET', "/aliases/#{id}", { }, default_headers)
+      Postfixman::Alias.new(request[:body])
     end
 
     def create_alias(params)
@@ -50,9 +65,14 @@ module Postfixman
       request[:body]['success'] == true
     end
 
-    def get_recipient_bccs
-      request = web_request('GET', "/domains/#{domain_id}/recipient_bccs", { }, default_headers)
+    def get_recipient_bccs(domain_id, filters={})
+      request = web_request('GET', "/domains/#{domain_id}/recipient_bccs", filters, default_headers)
       request[:body].map { |x| Postfixman::RecipientBcc.new(x) }
+    end
+
+    def get_recipient_bcc(id)
+      request = web_request('GET', "/recipient_bccs/#{id}", { }, default_headers)
+      Postfixman::RecipientBcc.new(request[:body])
     end
 
     def create_recipient_bccs(params)
@@ -60,19 +80,24 @@ module Postfixman
       Postfixman::User.new(request[:body])
     end
 
-    def update_sender_bccs(sender_bcc_id, params)
+    def update_recipient_bccs(recipient_bcc_id, params)
       request = web_request('PUT', "/recipient_bccs/#{user_id}", params, default_headers)
       Postfixman::User.new(request[:body])
     end
 
-    def delete_recipient_bccs(sender_bcc_id)
+    def delete_recipient_bccs(recipient_bcc_id)
       request = web_request('DELETE', "/recipient_bccs/#{user_id}", params, default_headers)
       request[:body]['success'] == true
     end
 
-    def get_sender_bccs
-      request = web_request('GET', "/domains/#{domain_id}/sender_bccs", { }, default_headers)
+    def get_sender_bccs(domain_id, filters={})
+      request = web_request('GET', "/domains/#{domain_id}/sender_bccs", filters, default_headers)
       request[:body].map { |x| Postfixman::SenderBcc.new(x) }
+    end
+
+    def get_sender_bcc(id)
+      request = web_request('GET', "/sender_bccs/#{id}", { }, default_headers)
+      Postfixman::SenderBcc.new(request[:body])
     end
 
     def create_sender_bccs(params)

@@ -5,3 +5,7 @@
 ## v0.0.2
 
 * Bugfixes
+
+## v0.1
+
+* Added api methods
