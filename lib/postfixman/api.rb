@@ -52,12 +52,12 @@ module Postfixman
 
     def create_alias(params)
       request = web_request('POST', '/aliases', params, default_headers)
-      Postfixman::User.new(request[:body])
+      Postfixman::Alias.new(request[:body])
     end
 
     def update_alias(alias_id, params)
       request = web_request('PUT', "/aliases/#{alias_id}", params, default_headers)
-      Postfixman::User.new(request[:body])
+      Postfixman::Alias.new(request[:body])
     end
 
     def delete_alias(alias_id)
@@ -77,12 +77,12 @@ module Postfixman
 
     def create_recipient_bccs(params)
       request = web_request('POST', '/recipient_bccs', params, default_headers)
-      Postfixman::User.new(request[:body])
+      Postfixman::RecipientBcc.new(request[:body])
     end
 
     def update_recipient_bccs(recipient_bcc_id, params)
       request = web_request('PUT', "/recipient_bccs/#{recipient_bcc_id}", params, default_headers)
-      Postfixman::User.new(request[:body])
+      Postfixman::RecipientBcc.new(request[:body])
     end
 
     def delete_recipient_bccs(recipient_bcc_id)
@@ -102,12 +102,12 @@ module Postfixman
 
     def create_sender_bccs(params)
       request = web_request('POST', '/sender_bccs', params, default_headers)
-      Postfixman::User.new(request[:body])
+      Postfixman::SenderBcc.new(request[:body])
     end
 
     def update_sender_bccs(sender_bcc_id)
       request = web_request('PUT', "/sender_bccs/#{sender_bcc_id}", params, default_headers)
-      Postfixman::User.new(request[:body])
+      Postfixman::SenderBcc.new(request[:body])
     end
 
     def delete_sender_bccs(sender_bcc_id)

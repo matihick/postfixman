@@ -13,3 +13,7 @@
 ## v0.1.1
 
 * Bugfixes
+
+## v0.1.2
+
+* Bugfixes
