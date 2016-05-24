@@ -56,12 +56,12 @@ module Postfixman
     end
 
     def update_alias(alias_id, params)
-      request = web_request('PUT', "/aliases/#{user_id}", params, default_headers)
+      request = web_request('PUT', "/aliases/#{alias_id}", params, default_headers)
       Postfixman::User.new(request[:body])
     end
 
     def delete_alias(alias_id)
-      request = web_request('DELETE', "/aliases/#{user_id}", params, default_headers)
+      request = web_request('DELETE', "/aliases/#{alias_id}", params, default_headers)
       request[:body]['success'] == true
     end
 
@@ -81,12 +81,12 @@ module Postfixman
     end
 
     def update_recipient_bccs(recipient_bcc_id, params)
-      request = web_request('PUT', "/recipient_bccs/#{user_id}", params, default_headers)
+      request = web_request('PUT', "/recipient_bccs/#{recipient_bcc_id}", params, default_headers)
       Postfixman::User.new(request[:body])
     end
 
     def delete_recipient_bccs(recipient_bcc_id)
-      request = web_request('DELETE', "/recipient_bccs/#{user_id}", params, default_headers)
+      request = web_request('DELETE', "/recipient_bccs/#{recipient_bcc_id}", params, default_headers)
       request[:body]['success'] == true
     end
 
@@ -106,12 +106,12 @@ module Postfixman
     end
 
     def update_sender_bccs(sender_bcc_id)
-      request = web_request('PUT', "/sender_bccs/#{user_id}", params, default_headers)
+      request = web_request('PUT', "/sender_bccs/#{sender_bcc_id}", params, default_headers)
       Postfixman::User.new(request[:body])
     end
 
     def delete_sender_bccs(sender_bcc_id)
-      request = web_request('DELETE', "/sender_bccs/#{user_id}", params, default_headers)
+      request = web_request('DELETE', "/sender_bccs/#{sender_bcc_id}", params, default_headers)
       request[:body]['success'] == true
     end
 

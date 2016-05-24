@@ -6,6 +6,10 @@
 
 * Bugfixes
 
-## v0.1
+## v0.1.0
 
 * Added api methods
+
+## v0.1.1
+
+* Bugfixes
