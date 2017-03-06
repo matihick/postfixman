@@ -17,3 +17,7 @@
 ## v0.1.2
 
 * Bugfixes
+
+## v0.2.0
+
+* Fixed delete methods

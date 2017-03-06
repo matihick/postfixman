@@ -36,7 +36,7 @@ module Postfixman
     end
 
     def delete_user(user_id)
-      request = web_request('DELETE', "/users/#{user_id}", params, default_headers)
+      request = web_request('DELETE', "/users/#{user_id}", { }, default_headers)
       request[:body]['success'] == true
     end
 
@@ -61,7 +61,7 @@ module Postfixman
     end
 
     def delete_alias(alias_id)
-      request = web_request('DELETE', "/aliases/#{alias_id}", params, default_headers)
+      request = web_request('DELETE', "/aliases/#{alias_id}", { }, default_headers)
       request[:body]['success'] == true
     end
 
@@ -86,7 +86,7 @@ module Postfixman
     end
 
     def delete_recipient_bccs(recipient_bcc_id)
-      request = web_request('DELETE', "/recipient_bccs/#{recipient_bcc_id}", params, default_headers)
+      request = web_request('DELETE', "/recipient_bccs/#{recipient_bcc_id}", { }, default_headers)
       request[:body]['success'] == true
     end
 
@@ -111,7 +111,7 @@ module Postfixman
     end
 
     def delete_sender_bccs(sender_bcc_id)
-      request = web_request('DELETE', "/sender_bccs/#{sender_bcc_id}", params, default_headers)
+      request = web_request('DELETE', "/sender_bccs/#{sender_bcc_id}", { }, default_headers)
       request[:body]['success'] == true
     end
 
